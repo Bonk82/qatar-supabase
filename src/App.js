@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { Login } from './pages/Login';
+import {Route, Routes} from 'react-router-dom'
+import "primereact/resources/themes/vela-orange/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";
+import 'primeflex/primeflex.css'; 
+import PrimeReact from 'primereact/api';
+import { Home } from './pages/Home';
+import { Register } from './pages/Register';
+import { NotFound } from './pages/NotFound';
+
+PrimeReact.ripple = true;
+PrimeReact.autoZIndex = true;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/Register' element={<Register/>}/>
+        <Route path='*' element={<NotFound/>}/>
+      </Routes>
     </div>
   );
 }
